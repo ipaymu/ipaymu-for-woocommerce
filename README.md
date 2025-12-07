@@ -1,74 +1,118 @@
-=== iPaymu Payment Gateway for WooCommerce ===
-Contributors: ipaymu
-Tags: payment, payment-gateway, indonesia, ecommerce, checkout
-Requires at least: 6.0
-Requires PHP: 7.4
-Tested up to: 6.5
-Stable tag: 2.0.1
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+![iPaymu Badge](ipaymu_badge.png)
 
-Official iPaymu Payment Gateway for WooCommerce. Supports VA, QRIS, Retail, Direct Debit, and Credit Card payments.
+# iPaymu Payment Gateway for WooCommerce
 
-== Description ==
+**Contributors:** ipaymu  
+**License:** GPLv2 or later  
+**License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
+**Requires at least:** WordPress 6.0, PHP 7.4  
+**Tested up to:** WordPress 6.9, WooCommerce 8.6.0  
+**Stable tag:** 2.0.1
 
-This plugin integrates the iPaymu Indonesia payment system into WooCommerce.
-It supports Virtual Account, QRIS, Minimarket Retail, Direct Debit, Credit Card, and other payment channels.
+## Overview
 
-To use this plugin you must have a registered iPaymu account with your VA and API Key.
+Official iPaymu Payment Gateway integration for WooCommerce. Accept payments via **Virtual Account (VA)**, **QRIS**, **Retail Outlets** (Alfamart/Indomaret), **Direct Debit**, **Credit Card**, and **COD** from your Indonesian customers.
 
-== Installation ==
+## Description
 
-1. Upload the plugin folder to `/wp-content/plugins/`.
-2. Activate via **Plugins → Installed Plugins**.
-3. Open **WooCommerce → Settings → Payments → iPaymu**.
-4. Enter the required API credentials.
+This plugin seamlessly integrates the iPaymu Indonesia payment system into WooCommerce, enabling your store to accept multiple payment methods popular in Indonesia:
 
-== Frequently Asked Questions ==
+- **Virtual Account (VA)** - Bank transfer payments
+- **QRIS** - QR code-based payments
+- **Retail Payments** - Alfamart / Indomaret transfers
+- **Direct Debit** - Automatic payment deductions
+- **Credit Card** - Card payments
+- **Cash on Delivery (COD)** - Payment on delivery
 
-= Do I need an iPaymu account? =
-Yes, VA and API Key are required.
+**Requirement:** An active [iPaymu](https://ipaymu.com) account with API Key and Virtual Account number.
 
-= Does this support HPOS? =
-Yes, full compatibility is declared.
+## Installation
 
-= Does this plugin support WooCommerce Blocks Checkout? =
-Yes.
+1. **Upload** the plugin folder to `/wp-content/plugins/`
+2. **Activate** via **Plugins → Installed Plugins**
+3. Navigate to **WooCommerce → Settings → Payments**
+4. Click on **iPaymu Payment Gateway** and configure:
+   - Enable/Disable the payment method
+   - Set test mode (Sandbox) or production
+   - Enter your VA and API Key
+   - Configure auto-redirect delay
+5. **Save changes**
 
-= Is SSL required? =
-Recommended for secure payment processing.
+## Frequently Asked Questions
 
-== Screenshots ==
+### Do I need an iPaymu account?
 
-1. Payment settings page
-2. Checkout payment method display
-3. Payment instruction screen
+Yes. You must have an active iPaymu account with:
+- VA (Virtual Account) number
+- API Key (for integration)
 
-== Changelog ==
+[Register for iPaymu](https://ipaymu.com) or [create an account](https://sandbox.ipaymu.com) for testing.
 
-= 2.0.1 =
-* Add HPOS compatibility
-* Add WooCommerce Blocks support
-* Improve error handling
-* Fix expired_time bug
-* Align request format with API V2 sample
+### Does this support HPOS (High Performance Order Storage)?
 
-== Upgrade Notice ==
+Yes! The plugin is fully compatible with WooCommerce's High Performance Order Storage feature.
 
-= 2.0.1 =
-This version includes important compatibility updates for HPOS and Checkout Blocks.
+### Does this plugin support WooCommerce Blocks Checkout?
 
-== Webhook Endpoint ==
+Yes! The plugin includes full support for the WooCommerce Blocks checkout system.
 
-The plugin exposes a webhook endpoint that WooCommerce uses for server-to-server
-notifications from iPaymu. The endpoint query parameter is:
+### Is SSL/TLS required?
+
+Yes, SSL/TLS is **recommended** (not optional) for secure payment processing and PCI compliance.
+
+## Changelog
+
+### Version 2.0.1
+
+- ✅ Add HPOS (High Performance Order Storage) compatibility
+- ✅ Add WooCommerce Blocks checkout support
+- ✅ Improve error handling and logging
+- ✅ Fix expired_time calculation
+- ✅ Align API request format with iPaymu API V2
+- ✅ Improve code quality and security
+
+## Configuration
+
+### Test Mode (Sandbox)
+
+To test payments:
+1. Enable **Mode Test/Sandbox** in settings
+2. Get test credentials from [iPaymu Sandbox](https://sandbox.ipaymu.com/integration)
+3. Enter your **Sandbox VA** and **API Key**
+
+### Production Mode
+
+When ready for live payments:
+1. Disable **Mode Test/Sandbox**
+2. Get live credentials from [iPaymu Production](https://my.ipaymu.com/integration)
+3. Enter your **Live VA** and **API Key**
+
+## Webhook Endpoint (for iPaymu Configuration)
+
+The plugin exposes a webhook endpoint for receiving payment notifications from iPaymu:
 
 ```
 ?wc-api=Ipaymu_WC_Gateway
 ```
 
-Example: `https://example.com/?wc-api=Ipaymu_WC_Gateway`
+**Full URL Example:**
+```
+https://example.com/?wc-api=Ipaymu_WC_Gateway
+```
 
-Note: Older releases of this plugin used `?wc-api=WC_Gateway_iPaymu`. If you have
-external integrations or webhook configurations that post to the older endpoint,
-please update them to use `Ipaymu_WC_Gateway` so notifications reach this handler.
+Configure this URL in your [iPaymu Dashboard](https://my.ipaymu.com) under **Integration Settings** → **Notification/Webhook URL**.
+
+### Backward Compatibility
+
+> **Note for upgrades:** Older plugin versions used `?wc-api=WC_Gateway_iPaymu`. The new endpoint is `?wc-api=Ipaymu_WC_Gateway`. Both endpoints remain supported for compatibility, but we recommend using the new one.
+
+## Support
+
+For issues or questions:
+- Visit [iPaymu Documentation](https://ipaymu.com/dokumentasi)
+- Contact [iPaymu Support](mailto:support@ipaymu.com)
+- Check the [GitHub Repository](https://github.com/ipaymu/ipaymu-for-woocommerce)
+
+## License
+
+GPLv2 or later. See [LICENSE](LICENSE) for details.
