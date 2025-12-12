@@ -7,6 +7,7 @@ Requires PHP: 7.4
 Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Requires Plugins: woocommerce
 
 iPaymu Payment Gateway for WooCommerce enables secure payments via Virtual Account, QRIS, Minimarket, Credit Card, and Direct Debit in Indonesia.
 
@@ -16,6 +17,33 @@ This plugin integrates iPaymu Indonesia's payment system into WooCommerce.
 It supports Virtual Accounts, QRIS, Retail Payments (Alfamart/Indomaret), Credit Card, Direct Debit, and more.
 
 To use this plugin, you need an active iPaymu account along with your API Key and Virtual Account number.
+
+== External Services ==
+
+This plugin communicates with iPaymu’s external API services for payment processing. These services are required for the plugin to function properly.
+
+= 1. iPaymu Production API =
+- Endpoint: https://my.ipaymu.com/api/v2/payment
+- Purpose: To create and validate live payment transactions.
+- Data Sent:
+  - Order details (order ID, amount, items)
+  - Customer information (name, email, phone)
+  - Return URL / Notify URL
+  - Merchant identifiers (API Key and Virtual Account Number)
+- When:
+  - During checkout after a customer confirms payment.
+- Terms of Service: https://ipaymu.com/syarat-dan-ketentuan/
+- Privacy Policy: https://ipaymu.com/kebijakan-privasi/
+
+= 2. iPaymu Sandbox API =
+- Endpoint: https://sandbox.ipaymu.com/api/v2/payment
+- Purpose: Testing transactions without real payments.
+- Data Sent: Same as production, but only for simulation.
+- Terms & Privacy: Same as above.
+
+Notes on data handling:
+- The plugin does not store or handle sensitive payment credentials such as credit card numbers.
+- All requests use secure HTTPS communication.
 
 == Installation ==
 

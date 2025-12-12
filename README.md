@@ -8,6 +8,7 @@
 **Requires at least:** WordPress 6.0, PHP 7.4  
 **Tested up to:** WordPress 6.9, WooCommerce 8.6.0  
 **Stable tag:** 2.0.1
+**Requires Plugins**: woocommerce
 
 ## Overview
 
@@ -25,6 +26,39 @@ This plugin seamlessly integrates the iPaymu Indonesia payment system into WooCo
 - **Cash on Delivery (COD)** - Payment on delivery
 
 **Requirement:** An active [iPaymu](https://ipaymu.com) account with API Key and Virtual Account number.
+
+## 🔐 External Services (Required)
+
+This plugin connects to iPaymu’s official API endpoints to process payments.
+
+### **1. iPaymu Production API**
+- **Endpoint**: `https://my.ipaymu.com/api/v2/payment`  
+- **Used for**: Live payment creation and validation  
+- **Data Sent:**
+  - Order details (ID, amount, items)
+  - Customer name, email, phone
+  - Return URL & Notify URL
+  - Merchant identifiers (API Key, Virtual Account)
+- **Triggered:** When customer submits checkout  
+- **ToS:** https://ipaymu.com/syarat-dan-ketentuan/  
+- **Privacy:** https://ipaymu.com/kebijakan-privasi/
+
+---
+
+### **2. iPaymu Sandbox API**
+- **Endpoint:** `https://sandbox.ipaymu.com/api/v2/payment`
+- **Used for:** Testing / simulation  
+- **Data Sent:** Same as production (non-financial, non-sensitive)  
+- **ToS & Privacy:** Same as above  
+
+---
+
+## 🔒 Data & Security Notes
+- No credit card or sensitive payment data is handled or stored by this plugin.
+- All API communication uses secure HTTPS.
+- Only essential transaction and customer fields are transmitted.
+
+---
 
 ## Installation
 
