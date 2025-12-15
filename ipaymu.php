@@ -3,7 +3,7 @@
   Plugin Name: iPaymu Payment Gateway for WooCommerce
   Plugin URI: https://github.com/ipaymu/ipaymu-for-woocommerce
   Description: iPaymu Indonesia Online Payment - Plug & Play, Without Website. Helping businesses to accept payments from consumers which provides the payment methods they use every day.
-  Version: 2.0.1
+  Version: 2.0.2
   Author: iPaymu Development Team
   Author URI: https://ipaymu.com
   License: GPLv2 or later
